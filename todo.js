@@ -102,9 +102,10 @@ function readData(){
       <div class="card-body"> \
         <div class="row"> \
           <div class="col-md-10"> \
-            <h3 class="w-75"> ' + item.task + ' </h3> \
+            <h3 class="w-75">' + item.task + ' </h3> \
           </div> \
           <div class="col-md-2 float-right"> \
+          <button type="button" class="btn btn-primary editTaskBtn" data-attri2="'+item.task+'" data-attri1="'+item.key+'" data-toggle="modal" data-target="#myModal">Edit</button> \
             <button class="btn btn-danger delete-task" id="'+ item.key +'" style="margin-left: 1em"> \
               Delete \
             </button> \
@@ -127,6 +128,16 @@ $(document).on("click", ".delete-task", function(){
   // console.log(currentUser.uid);
   firebase.database().ref().child('tasks_list/'+ currentUser.uid +"/"+ taskId).remove();
   location.reload();
+
+});
+
+// deleting task
+$(document).on("click", ".editTaskBtn", function(){
+  var taskEditId = $(this).attr("data-attri1");
+  var taskEditText = $(this).attr("data-attri2");
+  $("#edit_todo").val(taskEditText);
+  // console.log(taskEditText + " " + taskEditId);
+  // location.reload();
 
 });
 
