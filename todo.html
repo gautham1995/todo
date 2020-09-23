@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>To-Do App</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="icon" href="todo.png" type="image/png" />
+    <link
+      rel="stylesheet"
+      href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+    />
+    <!-- The core Firebase JS SDK is always required and must be listed first -->
+    <script src="https://www.gstatic.com/firebasejs/7.21.0/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.21.0/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.21.0/firebase-database.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+    <!-- <script src="https://www.gstatic.com/firebasejs/7.21.0/firebase.js"></script> -->
+
+    <!-- TODO: Add SDKs for Firebase products that you want to use
+     https://firebase.google.com/docs/web/setup#available-libraries -->
+
+    <script>
+      // Your web app's Firebase configuration
+      var firebaseConfig = {
+        apiKey: "AIzaSyDu5S97E3YcGYB-DmZWMD8iiC9YccaX15Y",
+        authDomain: "test-3bdd8.firebaseapp.com",
+        databaseURL: "https://test-3bdd8.firebaseio.com",
+        projectId: "test-3bdd8",
+        storageBucket: "test-3bdd8.appspot.com",
+        messagingSenderId: "524618425163",
+        appId: "1:524618425163:web:9f1de15e29cc199d203ece",
+      };
+      // Initialize Firebase
+      firebase.initializeApp(firebaseConfig);
+    </script>
+    <script src="todo.js"></script>
+  </head>
+  <body class="bg-light">
+    <div class="container" id="authentication">
+        <div class="mt-5">
+          <h2 class="text-center">Firebase - Google Login</h2>
+          <button type="button" class="btn btn-primary mt-3 mx-auto d-block" id="google">Login with Google</button>
+        </div>
+      </div>
+
+    <div class="container" id="app_todo">
+      <div class="jumbotron">
+        <div class="dropdown">
+          <button
+            type="button"
+            class="btn btn-primary dropdown-toggle mx-auto d-block"
+            data-toggle="dropdown"
+          >
+            <h6 class="text-center" id="user_name">Welcome User</h6>
+          </button>
+          <div class="dropdown-menu">
+            <a class="dropdown-item" id="logout_btn" href="#!">Logout</a>
+          </div>
+        </div>
+
+        <div class="input-group mt-4">
+          <input
+            type="text"
+            class="form-control"
+            placeholder="Enter a task.."
+            id="name_todo"
+            required
+            autofocus
+          />
+          <div class="input-group-append">
+            <button class="btn btn-success" id="add_todo">Save</button>
+          </div>
+        </div>
+      </div>
+
+      <div id="list_todo">
+        <h2 class="text-center">Tasks List</h2>
+        <div class="mt-4">
+          <div class="card">
+            <div class="card-body">
+              <div class="row">
+                <div class="col-md-10">
+                  <h3 class="w-75">{{categorie.name}}</h3>
+                </div>
+                <div class="col-md-2 float-right">
+                  <button class="btn btn-primary">Add</button>
+                  <button class="btn btn-primary" style="margin-left: 1em">
+                    Edit
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
