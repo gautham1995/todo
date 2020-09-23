@@ -6,9 +6,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <link rel="icon" href="todo.png" type="image/png" />
     <link
-      rel="stylesheet"
-      href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
-    />
+      rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"/>
     <!-- The core Firebase JS SDK is always required and must be listed first -->
     <script src="https://www.gstatic.com/firebasejs/7.21.0/firebase-app.js"></script>
     <script src="https://www.gstatic.com/firebasejs/7.21.0/firebase-auth.js"></script>
@@ -40,9 +39,10 @@
   </head>
   <body class="bg-light">
     <div class="container" id="authentication">
-        <div class="mt-5">
-          <h2 class="text-center">Firebase - Google Login</h2>
-          <button type="button" class="btn btn-primary mt-3 mx-auto d-block" id="google">Login with Google</button>
+        <div class="pt-5 bg-light">
+          <h2 class="text-center mt-5">To-Do App</h2>
+          <button type="button" class="btn btn-primary mt-5 mx-auto d-block" id="google">
+            <i class="fa fa-google"></i>&nbsp;&nbsp;Login with Google</button>
         </div>
       </div>
 
@@ -54,10 +54,10 @@
             class="btn btn-primary dropdown-toggle mx-auto d-block"
             data-toggle="dropdown"
           >
-            <h6 class="text-center" id="user_name">Welcome User</h6>
+            <h6 class="text-center" id="user_name"><i class="fa fa-user-circle"></i>&nbsp;&nbsp;</h6>
           </button>
           <div class="dropdown-menu">
-            <a class="dropdown-item" id="logout_btn" href="#!">Logout</a>
+            <a class="dropdown-item" id="logout_btn" href="#!"><i class="fa fa-sign-out"></i>&nbsp;Logout</a>
           </div>
         </div>
 
@@ -71,13 +71,13 @@
             autofocus
           />
           <div class="input-group-append">
-            <button class="btn btn-success" id="add_todo">Save</button>
+            <button class="btn btn-success" id="add_todo"><i class="fa fa-check"></i>&nbsp;Save</button>
           </div>
         </div>
       </div>
 
       <div>
-        <h2 class="text-center">Tasks List</h2>
+        <h2 class="text-center"><i class="fa fa-list-ul"></i>&nbsp;Tasks List</h2>
         <div class="mt-4" id="list_todo">
           <div id="endRes">
           
@@ -94,7 +94,7 @@
 
       <!-- Modal Header -->
       <div class="modal-header">
-        <h4 class="modal-title">Edit Task</h4>
+        <h4 class="modal-title"><i class="fa fa-edit"></i>&nbsp;Edit Task</h4>
         <button type="button" class="close" data-dismiss="modal">&times;</button>
       </div>
 
@@ -115,7 +115,8 @@
 
       <!-- Modal footer -->
       <div class="modal-footer">
-        <button type="button" class="btn btn-success" id="edit_todo_save" data-dismiss="modal">Save</button>
+        <button type="button" class="btn btn-success" id="edit_todo_save" data-dismiss="modal">
+          <i class="fa fa-check"></i>&nbsp;Save</button>
       </div>
 
     </div>

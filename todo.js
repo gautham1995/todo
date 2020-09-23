@@ -25,7 +25,7 @@ $(document).ready(function () {
             // The user's ID, unique to the Firebase project. Do NOT use
             // this value to authenticate with your backend server, if
             // you have one. Use User.getToken() instead.
-            $('#user_name').text(email);
+            $('#user_name').append(email);
             currentUser = user;
             // writeUserData(user);
             // console.log("uid: " + currentUser.uid);
@@ -101,14 +101,16 @@ function readData(){
       showTasks = '<div class="card"> \
       <div class="card-body"> \
         <div class="row"> \
-          <div class="col-md-10"> \
-            <h3 class="w-75">' + item.task + ' </h3> \
+          <div class="col-md-8"> \
+            <h3 class="w-75"><span class="badge badge-secondary">Task:</span>&nbsp;&nbsp;' + item.task + ' </h3> \
           </div> \
-          <div class="col-md-2 float-right"> \
-          <button type="button" class="btn btn-primary editTaskBtn" data-attri2="'+item.task+'" data-attri1="'+item.key+'" data-toggle="modal" data-target="#myModal">Edit</button> \
+          <div class="col-md-4"> \
+          <div class="text-center"> \
+          <button type="button" class="btn btn-primary editTaskBtn" data-attri2="'+item.task+'" data-attri1="'+item.key+'" data-toggle="modal" data-target="#myModal"><i class="fa fa-edit"></i>&nbsp;Edit</button> \
             <button class="btn btn-danger delete-task" id="'+ item.key +'" style="margin-left: 1em"> \
-              Delete \
+            <i class="fa fa-trash-o"></i>&nbsp;Delete \
             </button> \
+            <\div> \
           </div> \
         </div> \
       </div> \
