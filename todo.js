@@ -28,8 +28,9 @@ $(document).ready(function () {
             $('#user_name').text(email);
             currentUser = user;
             // writeUserData(user);
-            console.log("uid: " + currentUser.uid);
+            // console.log("uid: " + currentUser.uid);
           }
+          readData();
         } else {
           // No user is signed in.
           $("#authentication").show();
@@ -37,7 +38,7 @@ $(document).ready(function () {
         }
       });
 
-
+      
 // google sign in
       $("#google").click(function () {
 
@@ -78,14 +79,55 @@ $("#add_todo").click(function () {
 
 
 function writeUserData(t) {
-    var d = new Date();
     var key = firebase.database().ref().child("tasks_list/"+currentUser.uid).push().key;
-    firebase.database().ref('tasks_list/' + currentUser.uid + "/" + key).set({
-      task:t
+    firebase.database().ref().child('tasks_list/' + currentUser.uid + "/" + key).set({
+      task:t,
+      key: key
     });
-    console.log(t+" "+currentUser.uid);
+    // console.log(t+" "+currentUser.uid + " "+ key);
+    location.reload();
   }
 
+// reading tasks
+function readData(){
+  var cuid;
+  cuid = currentUser.uid;
+  var taskRef = firebase.database().ref().child('tasks_list/' + cuid);
+  taskRef.on('value', function(snapshot) {
 
+    snapshot.forEach(function(childsnapshot){
+      var item = childsnapshot.val();
+
+      showTasks = '<div class="card"> \
+      <div class="card-body"> \
+        <div class="row"> \
+          <div class="col-md-10"> \
+            <h3 class="w-75"> ' + item.task + ' </h3> \
+          </div> \
+          <div class="col-md-2 float-right"> \
+            <button class="btn btn-danger delete-task" id="'+ item.key +'" style="margin-left: 1em"> \
+              Delete \
+            </button> \
+          </div> \
+        </div> \
+      </div> \
+    </div><br>';
+
+    $("#endRes").append(showTasks);
+    // location.reload();
+    console.log(item);
+    });
+  });
+}
+
+// deleting task
+$(document).on("click", ".delete-task", function(){
+  var taskId = $(this).attr('id');
+  // console.log(taskId);
+  // console.log(currentUser.uid);
+  firebase.database().ref().child('tasks_list/'+ currentUser.uid +"/"+ taskId).remove();
+  location.reload();
+
+});
 
 });
