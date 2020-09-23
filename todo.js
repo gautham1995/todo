@@ -71,7 +71,7 @@ $(document).ready(function () {
 
 // adding task
 $("#add_todo").click(function () {
-    var task_todo = $("#name_todo"). val();
+    var task_todo = $("#name_todo").val();
     // console.log(task_todo);
     $('#name_todo').val("");
     writeUserData(task_todo);
@@ -131,14 +131,25 @@ $(document).on("click", ".delete-task", function(){
 
 });
 
-// deleting task
+// update task
 $(document).on("click", ".editTaskBtn", function(){
   var taskEditId = $(this).attr("data-attri1");
   var taskEditText = $(this).attr("data-attri2");
   $("#edit_todo").val(taskEditText);
-  // console.log(taskEditText + " " + taskEditId);
-  // location.reload();
-
+  $("#usr").val(taskEditId);
+  
 });
+
+$("#edit_todo_save").click(function () {
+  var editInp = $("#edit_todo").val();
+  var usrIn = $("#usr").val();
+  console.log("editing - " + editInp + ", " + usrIn);
+  // writeUserData(task_todo);
+  firebase.database().ref().child('tasks_list/' + currentUser.uid + "/" + usrIn).update({
+    task:editInp
+  });
+  location.reload();
+});
+
 
 });
